@@ -1,0 +1,29 @@
+Problem link: https://www.interviewbit.com/problems/repeat-and-missing-number-array/
+
+Solution:
+
+class Solution:
+    # @param A : tuple of integers
+    # @return a list of integers
+    def repeatedNumber(self, A):
+        l=len(A)
+        act_sum=sum(A)
+        exp_sum=(l*(l+1))//2
+        diff = abs(act_sum-exp_sum)
+        
+        sq_sum = 0
+        for i in A:
+            sq_sum+=(i*i)
+        
+        exp_sq_sum = (l*(l+1)*(2*l+1))//6
+        sq_diff = abs(sq_sum-exp_sq_sum)
+        
+        z=sq_diff//diff
+        
+        r=(z+diff)//2
+        m=abs(r-z)
+        lst=[]
+        lst.append(r)
+        lst.append(m)
+        
+        return lst
