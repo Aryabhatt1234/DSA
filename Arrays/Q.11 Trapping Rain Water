@@ -1,0 +1,29 @@
+Problem Link: https://leetcode.com/problems/trapping-rain-water/
+
+Solution:
+
+class Solution:
+    def trap(self, height: List[int]) -> int:
+
+        n = len(height)
+        ans=0
+
+        lv=[]
+        k=0
+        rv=[k]*n
+        lv.append(height[0])
+        rv[n-1]=height[n-1]
+
+        for i in range(1,n):
+            lv.append(max(lv[i-1],height[i]))
+
+        for i in range(n-2,-1,-1):
+            rv[i]=max(height[i],rv[i+1])
+
+        for i in range(n):
+            ans+=(min(lv[i],rv[i])-height[i])
+
+        print(lv)
+        print(rv)
+
+        return ans
