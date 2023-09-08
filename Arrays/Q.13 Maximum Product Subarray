@@ -1,0 +1,19 @@
+Problem Link- https://leetcode.com/problems/maximum-product-subarray/
+
+Solution:
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        n=len(nums)
+        curmax = nums[0]
+        curmin = nums[0]
+        ans = nums[0]
+
+        for i in range(1,n):
+            temp = curmax
+            curmax = max(nums[i],max(curmax*nums[i],curmin*nums[i]))
+            curmin = min(nums[i],min(temp*nums[i],curmin*nums[i]))
+            ans = max(ans,curmax)
+
+
+        return ans
