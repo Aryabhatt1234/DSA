@@ -1,0 +1,15 @@
+Problem Link: https://leetcode.com/problems/valid-palindrome/
+
+Solution:
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        t=""
+        for i in s:
+            if i.isalpha():
+                t+=i.lower()
+            if i.isnumeric():
+                t+=i
+
+        return t == t[::-1]
+        
