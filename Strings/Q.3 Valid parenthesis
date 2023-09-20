@@ -1,0 +1,28 @@
+Problem Link: https://leetcode.com/problems/valid-parentheses/description/
+
+Solution:
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dict = {'(':')','{':'}','[':']'}
+
+        lst=[]
+        for i in s:
+            if i in dict:
+                lst.append(i)
+            elif len(lst)==0 or i!=dict[lst.pop()]:
+                return False
+
+        return len(lst)==0
+
+
+Another way (Feasible in Python)
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        while(len(s)) > 0:
+            l = len(s)
+            s = s.replace('()','').replace('{}','').replace('[]','')
+            if(l==len(s)):
+                return False
+        return True
