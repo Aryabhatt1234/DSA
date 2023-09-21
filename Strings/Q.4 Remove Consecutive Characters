@@ -1,0 +1,15 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1
+
+Solution:
+
+class Solution:
+    def removeConsecutiveCharacter(self, S):
+        l = len(S)
+        t = ""
+        for i in range(l-1):
+            if S[i]!=s[i+1]:
+                t+=s[i]
+            
+        t+=s[l-1]
+        
+        return t
