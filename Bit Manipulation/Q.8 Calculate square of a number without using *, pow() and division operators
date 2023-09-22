@@ -1,0 +1,18 @@
+Problem Link: https://www.geeksforgeeks.org/calculate-square-of-a-number-without-using-and-pow/
+
+Solution:
+
+def square(num):
+    if num < 0:
+        num = -num
+    power, result = 0, 0
+    temp = num
+ 
+    while temp:
+        if temp & 1:
+            # result=result+(num*(2^power))
+            result += (num << power)
+        power += 1
+        temp = temp >> 1
+ 
+    return result
