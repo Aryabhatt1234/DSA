@@ -1,0 +1,28 @@
+Problem Link: https://www.geeksforgeeks.org/check-reversing-sub-array-make-array-sorted/
+
+Solution:
+
+def reverse(a, x, y):
+    while(x < y):
+        temp = a[x]
+        a[x] = a[y]
+        a[y] = temp
+        x += 1
+        y -= 1
+  
+def sortArr(a, n):
+    x, y = -1, -1
+  
+    for i in range(n-1):
+        if(a[i] > a[i+1]):
+            if(x == -1):
+                x = i
+            y = i + 1
+  
+    if(x != -1):
+        reverse(a, x, y)
+        for i in range(0, n-1):
+            if(a[i] > a[i+1]):
+                return False
+  
+    return True
