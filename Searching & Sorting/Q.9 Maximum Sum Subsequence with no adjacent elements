@@ -1,0 +1,17 @@
+Problem Link: https://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/
+
+Solution:
+
+def rec(nums, idx):
+    if idx >= len(nums):
+        return 0
+    return max(nums[idx] + rec(nums, idx + 2), rec(nums, idx + 1))
+ 
+def findMaxSum(arr, N):
+    return rec(arr, 0)
+
+if __name__ == "__main__":
+    arr = [5, 5, 10, 100, 10, 5]
+    N = len(arr)
+
+    print(findMaxSum(arr, N))
