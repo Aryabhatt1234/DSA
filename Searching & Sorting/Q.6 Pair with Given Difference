@@ -1,0 +1,19 @@
+Problem Link: https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/
+
+Solution:
+
+def findPair( arr, size, n):
+    arr.sort()
+    l = 0
+    r = 1
+    n = abs(n)
+
+    while (l <= r and r < size) :
+        diff = arr[r] - arr[l]
+        if (diff == n and l != r):
+            return True
+ 
+        elif (diff > n):
+            l += 1
+            r+=1
+    return False
