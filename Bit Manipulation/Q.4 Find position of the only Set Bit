@@ -1,0 +1,16 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/find-position-of-set-bit3706/1
+
+Solution:
+
+class Solution:
+    def findPosition(self, n):
+        ct=0
+        idx=0
+        for i in range(32):
+            if N&(1<<i):
+                ct+=1
+                idx=i
+        if ct!=1:
+            return -1
+        else:
+            return idx+1
