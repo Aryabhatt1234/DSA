@@ -1,0 +1,17 @@
+problem Link: https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
+
+Solution:
+
+def find_duplicates(arr):
+    duplicates = []
+    n = len(arr)
+    
+    for i in range(n):
+        index = arr[i] % n
+        arr[index] += n
+ 
+    for i in range(n):
+        if arr[i] // n >= 2:
+            duplicates.append(i)
+ 
+    return duplicates
