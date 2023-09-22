@@ -1,0 +1,13 @@
+Problem Link: https://www.geeksforgeeks.org/permute-two-arrays-sum-every-pair-greater-equal-k/
+
+Solution:
+
+def isPossible(a,b,n,k):
+    a.sort(reverse=True)
+    b.sort()
+    
+    for i in range(n):
+        if (a[i] + b[i] < k):
+            return False
+   
+    return True
