@@ -1,0 +1,16 @@
+Problem Link: https://leetcode.com/problems/reverse-linked-list/description/
+
+Solution:
+
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        pre = None
+        curr = head
+
+        while curr:
+            nxt = curr.next
+            curr.next = pre
+            pre = curr
+            curr = nxt
+
+        return pre
