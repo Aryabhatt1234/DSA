@@ -1,0 +1,21 @@
+Problem Link: https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/
+
+Solution:
+
+def sortList(head):
+    count = [0, 0, 0]
+
+    current = head
+    while current is not None:
+        count[current.data] += 1
+        current = current.next
+
+    current = head
+    i = 0
+    while current is not None:
+        if count[i] == 0:
+            i += 1
+        else:
+            current.data = i
+            count[i] -= 1
+            current = current.next
