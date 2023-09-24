@@ -1,0 +1,23 @@
+Problem Link: https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
+
+Solution:
+
+def removeDuplicates(self, head):
+
+        if self.head is None or self.head.next is None:
+            return head
+            
+        hash = set()
+ 
+        current = head
+        hash.add(self.head.data)
+ 
+        while current.next is not None:
+ 
+            if current.next.data in hash:
+                current.next = current.next.next
+            else:
+                hash.add(current.next.data)
+                current = current.next
+ 
+        return head
