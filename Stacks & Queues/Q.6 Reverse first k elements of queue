@@ -1,0 +1,15 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1
+
+Solution:
+
+
+# Here q is given as a list in the problem.
+def modifyQueue(q,k):
+    stk = []
+    for i in range(k):
+        stk.append(q[i])
+    stk = stk[::-1]
+    for i in range(k,len(q)):
+        stk.append(q[i])
+        
+    return stk
