@@ -1,0 +1,16 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/queue-reversal/1
+
+Solution:
+
+class Solution:
+    def rev(self, q):
+        stk = []
+        while (q.qsize() != 0):
+            k = q.get()
+            stk.append(k)
+            
+        while (len(stk)!=0):
+            l = stk.pop()
+            q.put(l)
+            
+        return q
