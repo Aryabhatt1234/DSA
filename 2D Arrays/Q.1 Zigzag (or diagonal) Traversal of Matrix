@@ -1,0 +1,10 @@
+Problem Link: https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/
+
+Solution:
+
+def diagonalOrder(arr, n, m):
+    ans = [[] for i in range(n + m - 1)]
+      
+    for i in range(m):
+        for j in range(n):
+            ans[i + j].append(arr[j][i])
