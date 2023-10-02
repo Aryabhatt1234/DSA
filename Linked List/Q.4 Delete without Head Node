@@ -1,0 +1,14 @@
+Problem Link: https://www.geeksforgeeks.org/given-only-a-pointer-to-a-node-to-be-deleted-in-a-singly-linked-list-how-do-you-delete-it/
+
+Solution:
+
+class Solution:
+    
+    def deleteNode(self,curr_node):
+        
+        while curr_node.next!=None:
+            curr_node.data = curr_node.next.data
+            pre = curr_node
+            curr_node = curr_node.next
+                
+        pre.next = None
