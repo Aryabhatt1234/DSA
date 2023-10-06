@@ -1,0 +1,31 @@
+Problem Link: https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
+
+Solution:
+
+st = []
+dq = []
+ 
+def add(data):
+    dq.append(data)
+    if (len(dq) > len(st) + 1):
+        temp = dq[0]
+        dq.pop(0)
+        st.append(temp)
+ 
+def pop():
+    data = dq[len(dq) - 1]
+    dq.pop()
+    if (len(st) > len(dq)):
+        temp = st[0]
+        st.pop()
+        dq.insert(temp,0)
+ 
+def getMiddleElement():
+    return dq[0]
+ 
+def deleteMiddleElement():
+    dq.pop(0)
+    if (len(st) > len(dq)):  # new middle element
+        temp = st[0] # should come at front of deque
+        st.pop()
+        dq.insert(temp,0)
