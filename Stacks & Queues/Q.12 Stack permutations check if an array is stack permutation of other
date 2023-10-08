@@ -1,0 +1,19 @@
+Problem Link: https://www.geeksforgeeks.org/stack-permutations-check-if-an-array-is-stack-permutation-of-other/
+
+Solution:
+
+def checkStackPermutation(ip: List[int], op: List[int]) -> bool:
+    s = []
+    j = 0
+ 
+    for i in range(len(ip)):
+        s.append(ip[i])
+ 
+        while s and s[-1] == op[j]:
+            s.pop()
+            j += 1
+ 
+        if j < len(op) and s[-1] == op[j]:
+            return False
+ 
+    return True
