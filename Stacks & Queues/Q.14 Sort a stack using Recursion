@@ -1,0 +1,17 @@
+Problem Link: https://www.geeksforgeeks.org/sort-a-stack-using-recursion/
+
+Solution:
+
+def sortStack(s):
+    if not s:
+        return
+    x = s.pop()
+    sortStack(s)
+    tempStack = []
+    
+    while s and s[-1] > x:
+        tempStack.append(s.pop())
+    s.append(x)
+    
+    while tempStack:
+        s.append(tempStack.pop())
