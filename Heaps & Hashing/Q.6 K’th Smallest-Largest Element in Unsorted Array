@@ -1,0 +1,11 @@
+Problem Link: https://www.geeksforgeeks.org/kth-smallest-largest-element-in-unsorted-array/
+
+Solution:
+
+import heapq
+def kthSmallest(arr, K):
+	max_heap = []   
+	for num in arr:
+		heapq.heappush(max_heap, -num)
+			heapq.heappop(max_heap)
+	return -max_heap[0]
