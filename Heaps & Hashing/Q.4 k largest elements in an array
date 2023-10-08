@@ -1,0 +1,15 @@
+Problem Link: https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
+
+Solution:
+
+def kLargest(v, N, K):
+    pq = []
+    heapq.heapify(pq)
+ 
+    for i in range(N):
+        heapq.heappush(pq, v[i])
+        if (len(pq) > K):
+            heapq.heappop(pq)
+
+    while(len(pq) != 0):
+        print(heapq.heappop(pq), end=' ')
