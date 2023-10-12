@@ -1,0 +1,34 @@
+Problem Link: https://leetcode.com/problems/reorder-list/
+
+Solution:
+
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        slow = fast = head
+        while fast:
+            fast = fast.next
+            if fast:
+                fast = fast.next
+                slow = slow.next
+
+        nxt = slow.next
+        slow.next = None
+        
+        prev = None
+        while nxt:
+            tmp = nxt.next
+            nxt.next = prev
+            prev = nxt
+            nxt = tmp
+
+        h1 = head
+        h2 = prev
+
+        while h1 and h2:
+            tmp1 = h1.next
+            tmp2 = h2.next
+            h1.next = h2
+            h2.next = tmp1
+            h1 = tmp1
+            h2 = tmp2
+        
