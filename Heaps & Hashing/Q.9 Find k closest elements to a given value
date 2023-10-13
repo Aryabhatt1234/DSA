@@ -1,0 +1,23 @@
+Problem Link: https://www.geeksforgeeks.org/find-k-closest-elements-given-value/
+
+Solution:
+
+def findClosestElements(arr, k, x):
+    max_heap = []
+    
+    for num in arr:
+        if num == x:
+            continue
+        diff = abs(num - x)
+        heapq.heappush(max_heap, (-diff, num))
+
+        if len(max_heap) > k:
+            heapq.heappop(max_heap)
+
+    result = []
+
+    while max_heap:
+        diff, num = heapq.heappop(max_heap)
+        result.append(num)
+        
+    return sorted(result)
