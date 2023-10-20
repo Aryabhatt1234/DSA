@@ -1,0 +1,15 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/count-total-set-bits-1587115620/1
+
+Solution:
+
+import math
+
+class Solution:
+    def countSetBits(self,n):
+        if n <= 1:
+            return n
+            
+        k = math.floor(math.log2(n))
+        ans = k*(1<<(k-1)) + n-(1<<k)+1 + self.countSetBits(n-(1<<k))
+        
+        return ans
