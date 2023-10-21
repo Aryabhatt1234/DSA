@@ -1,0 +1,24 @@
+Problem Link: https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
+
+Solution:
+
+ def detectAndRemoveLoop():  
+      if head is None:
+          return
+      if head.next is None:
+          return
+      slow_p = head
+      fast_p = head
+          
+      while(slow_p and fast_p and fast_p.next):
+          slow_p = slow_p.next
+          fast_p = fast_p.next.next
+          
+          if slow_p == fast_p:
+            slow_p = self.head
+            
+            while (slow_p.next != fast_p.next):
+              slow_p = slow_p.next
+              fast_p = fast_p.next
+              
+            fast_p.next = None
