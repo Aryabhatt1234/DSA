@@ -1,0 +1,26 @@
+Problem Link: https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+
+Solution:
+
+from heapq import heappush, heappop
+from bisect import bisect, insort
+
+class Solution:
+    def inversionCount(self, arr, n):
+        if n <= 1:
+            return 0
+            
+        lst = []
+        res = 0
+        
+        for i,v in enumerate(arr):
+            heappush(lst,(v,i))
+            
+        x = []
+        while(lst):
+            v,i = heappop((lst))
+            y = bisect(x,i)
+            res += i-y
+            insort(x,i)
+            
+        return res
