@@ -1,0 +1,20 @@
+Problem Link: https://www.geeksforgeeks.org/kth-largest-element-in-a-stream/
+
+Solution:
+
+def getAllKthNumber(arr):
+    list = []
+    min = []
+    
+    for val in arr:
+        if len(min) < k:
+            heapq.heappush(min, val)
+        else:
+            if val > min[0]:
+                heapq.heappop(min)
+                heapq.heappush(min, val)
+        if len(min) >= k:
+            list.append(min[0])
+        else:
+            list.append(-1)
+    return list
