@@ -1,0 +1,25 @@
+Problem Link: https://www.geeksforgeeks.org/count-distinct-elements-in-every-window-of-size-k/
+
+Solution:
+
+from collections import defaultdict
+def countDistinct(arr, K, N):
+    mp = defaultdict(lambda: 0)
+    dist_count = 0
+    
+    for i in range(K):
+        if mp[arr[i]] == 0:
+            dist_count += 1
+        mp[arr[i]] += 1
+ 
+    print(dist_count)
+
+    for i in range(K, N):
+        if mp[arr[i - K]] == 1:
+            dist_count -= 1
+        mp[arr[i - K]] -= 1
+ 
+        if mp[arr[i]] == 0:
+            dist_count += 1
+        mp[arr[i]] += 1
+        print(dist_count)
