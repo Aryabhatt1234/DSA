@@ -1,0 +1,11 @@
+Problem Link: https://leetcode.com/problems/top-k-frequent-elements/
+
+Solution:
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        d = {}
+        for num in nums:
+            d[num] = d.get(num,0) + 1
+
+        return heapq.nlargest(k, d, key = d.get)
