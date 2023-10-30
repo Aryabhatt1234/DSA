@@ -1,0 +1,49 @@
+Problem Link: https://www.geeksforgeeks.org/rat-in-a-maze/
+
+Solution:
+
+class Solution:
+	def solve(self, i, j, arr, n, ans, move, direction, dir1, djr, visited):
+		if i == n - 1 and j == n - 1:
+			ans.append(move)
+			return
+		
+		for ind in range(4):
+			nexti = i + dir1[ind]
+			nextj = j + djr[ind]
+			
+			if 0 <= nexti < n and 0 <= nextj < n and visited[nexti][nextj] == 0 and arr[nexti][nextj] == 1:
+			visited[i][j] = 1
+			self.solve(nexti, nextj, arr, n, ans, move + direction[ind], direction, dir1, djr, visited)
+			visited[i][j] = 0
+
+	def findPath(self, m, n):
+		ans = []
+		direction = "DLRU"
+		dir1 = [1, 0, 0, -1]
+		djr = [0, -1, 1, 0]
+
+		visited = [[0 for _ in range(n)] for _ in range(n)]
+  
+		if m[0][0] == 1:
+			self.solve(0, 0, m, n, ans, "", direction, dir1, djr, visited)
+
+		return ans
+
+if __name__ == "__main__":
+	n = 4
+	m = [
+		[1, 0, 0, 0],
+		[1, 1, 0, 1],
+		[1, 1, 0, 0],
+		[0, 1, 1, 1]
+	]
+
+	obj = Solution()
+	result = obj.findPath(m, n)
+	if len(result) == 0:
+		print(-1)
+	else:
+		for path in result:
+			print(path, end=" ")
+		print()
