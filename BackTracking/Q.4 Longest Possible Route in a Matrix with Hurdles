@@ -1,0 +1,29 @@
+Problem Link: https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
+
+Solution:
+
+def findLongestPath(mat, i, j, di, dj, n, m, cur=0, ans=-1):
+	if i == di and j == dj:
+		if cur > ans:
+			ans = cur
+		return ans
+
+	if mat[i][j]==0 or mat[di][dj]==0:
+		return ans
+	mat[i][j] = 0
+
+	if j != m-1 and mat[i][j+1] > 0:
+		ans = findLongestPath(mat, i, j+1, di, dj, n, m, cur+1, ans)
+
+	if i != n-1 and mat[i+1][j] > 0:
+		ans = findLongestPath(mat, i+1, j, di, dj, n, m, cur+1, ans)
+
+	if j != 0 and mat[i][j-1] > 0:
+		ans = findLongestPath(mat, i, j-1, di, dj, n, m, cur+1, ans)
+
+	if i != 0 and mat[i-1][j] > 0:
+		ans = findLongestPath(mat, i-1, j, di, dj, n, m, cur+1, ans)
+
+	mat[i][j] = 1
+
+	return ans
