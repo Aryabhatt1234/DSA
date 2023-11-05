@@ -1,0 +1,42 @@
+Problem Link: https://www.geeksforgeeks.org/find-paths-from-corner-cell-to-middle-cell-in-maze/
+
+Solution:
+
+def isValid(visited, pt):
+    return (pt[0] >= 0) and (pt[0] < N) and (pt[1] >= 0) and (pt[1] < N) and (pt not in visited)
+ 
+row = [-1, 1, 0, 0]
+col = [0, 0, -1, 1]
+ 
+_row = [0, 0, N-1, N-1]
+_col = [0, N-1, 0, N-1]
+ 
+def findPathInMazeUtil(maze, path, visited, curr):
+    if curr[0] == N // 2 and curr[1] == N // 2:
+        printPath(path)
+        return
+    for i in range(4):
+        n = maze[curr[0]][curr[1]]
+        x = curr[0] + row[i]*n
+        y = curr[1] + col[i]*n
+        next = (x, y)
+        if isValid(visited, next):
+            visited.append(next)
+            path.append(next)
+            findPathInMazeUtil(maze, path, visited, next)
+            path.pop()
+            visited.remove(next)
+ 
+def findPathInMaze(maze):
+    path = []
+    visited = []
+ 
+    for i in range(4):
+        x = _row[i]
+        y = _col[i]
+        pt = (x, y)
+        visited.append(pt)
+        path.append(pt)
+        findPathInMazeUtil(maze, path, visited, pt)
+        path.pop()
+        visited.remove(pt)
